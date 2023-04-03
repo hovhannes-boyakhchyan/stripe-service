@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=stage
+      - PORT=2772
+    ports:
+      - "${PORT_EXPOSE}:${PORT}"
+    networks:
+      - mynet
+networks:
+  mynet:
